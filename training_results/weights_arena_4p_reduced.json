@@ -1,0 +1,69 @@
+{
+  "arena_id": "arena_4p_reduced",
+  "matches": 12255,
+  "elapsed_sec": 25201.3,
+  "wins": {
+    "BLUE": 1651,
+    "PURPLE": 4070,
+    "RED": 1585,
+    "GREEN": 4444,
+    "DRAW": 505
+  },
+  "weights": {
+    "RED": {
+      "w_voronoi": 1.065993264467536,
+      "w_hunger": 2.1150339102519014,
+      "w_holgura": 1.7568492786843852,
+      "w_agresion": 2.1338805197629163,
+      "w_bomb_buffer": 1.259608778730988,
+      "w_center_drift": 0.48491835949253403,
+      "w_straight": 1.2146199761263559,
+      "w_tail_avoid": 1.223479842915879,
+      "w_pot_ambition": 2.3261490331845294
+    },
+    "GREEN": {
+      "w_voronoi": 1.1841166116270636,
+      "w_hunger": 0.21550164240490513,
+      "w_holgura": 2.7654525046583425,
+      "w_agresion": 1.7528801173631026,
+      "w_bomb_buffer": 4.1607800636946495,
+      "w_center_drift": 0.6110413066654252,
+      "w_straight": 1.5670531778895305,
+      "w_tail_avoid": 2.6352574433078257,
+      "w_pot_ambition": 1.7718594957974332
+    },
+    "BLUE": {
+      "w_voronoi": 2.2792505173743547,
+      "w_hunger": 1.5181157640512073,
+      "w_holgura": 1.223401611992803,
+      "w_agresion": 1.457645524998858,
+      "w_bomb_buffer": 1.9246624000936208,
+      "w_center_drift": 1.638031797910701,
+      "w_straight": 0.5621415389981771,
+      "w_tail_avoid": 2.2391869298120324,
+      "w_pot_ambition": 0.6881274883165447
+    },
+    "PURPLE": {
+      "w_voronoi": 1.8877208493495738,
+      "w_hunger": 0.2791189126490112,
+      "w_holgura": 1.7630916986288978,
+      "w_agresion": 1.0069119893372007,
+      "w_bomb_buffer": 0.27408826409803644,
+      "w_center_drift": 1.4158806384162037,
+      "w_straight": 0.66384981748585,
+      "w_tail_avoid": 1.1623534399755528,
+      "w_pot_ambition": 2.6793967515494126
+    },
+    "GOLD": {
+      "w_voronoi": 1.8,
+      "w_hunger": 1.2,
+      "w_holgura": 2.2,
+      "w_agresion": 1.5,
+      "w_bomb_buffer": 2.4,
+      "w_center_drift": 1.5,
+      "w_straight": 0.5,
+      "w_tail_avoid": 1.8,
+      "w_pot_ambition": 1.6
+    }
+  }
+}
