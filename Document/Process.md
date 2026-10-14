@@ -101,14 +101,29 @@ flowchart TD
 - [x] Ejecutar simulación prolongada de 7 horas continuas en paralelo sobre los 6 entornos: **22,124 partidas disputadas**, cero caídas y pesos evolutivos guardados en `training_results/`.
 - [x] Crear [`report_status.py`](file:///c:/Users/JSCC2/OneDrive/Documentos/PROYECTOS/SNAKE/report_status.py) para compilación e inspección en vivo de estadísticas y win-rates de las arenas.
 - [x] Incorporar los mejores pesos evolucionados de `training_results/` de vuelta al motor gráfico de [`2.0.py`](file:///c:/Users/JSCC2/OneDrive/Documentos/PROYECTOS/SNAKE/2.0.py) e integrar formalmente la 5ª Facción: Basilisco Ámbar (`FactionId.GOLD`, #Dorado).
-- [x] Diseñar e implementar la nueva interfaz interactiva `ColosseumSetupScene` al seleccionar "Battle Royale / Coliseo", permitiendo modificar:
-  - **Tamaño de la Arena**: 16x16 (Reducido), 22x22 (Normal), 32x32 (Ampliado), 48x48 (Mega Arena).
-  - **Cantidad de Gladiadores**: 2, 3, 4 y 5 serpientes simultáneas.
-  - **Jinetes y Personalidades**: Selector de slots interactivo con rotación cíclica entre las 5 facciones (Voraz, Zen, Territorial, Mística, Táctico), previsualización de color y descripción táctica.
-  - **Botón de Iniciar Batalla**: Lanzamiento instantáneo de `PlayScene` con la configuración exacta elegida.
-- [x] Actualizar y superar el 100% de la suite de pruebas automatizadas en [`test_engine.py`](file:///c:/Users/JSCC2/OneDrive/Documentos/PROYECTOS/SNAKE/test_engine.py) validando render, transiciones, clics, teclas de navegación (ESC/ENTER) y simulación multi-arena con 2, 4 y 5 contendientes.
+- [x] Diseñar e implementar la nueva interfaz interactiva `ColosseumSetupScene` al seleccionar "Battle Royale / Coliseo", permitiendo modificar tamaño de arena (16, 22, 32, 48), gladiadores (2 a 5) y rotación interactiva de jinetes.
+- [x] **Reestructuración Modular Completa del Proyecto (v2.0 Modular)**:
+  - `config.py`: Parámetros globales, dimensiones y constantes de red/pantalla.
+  - `models.py`: Entidades (`Point`, `Direction`, `Food`, `FactionId`, `ColosseumSnake`, `ColosseumState`).
+  - `rules.py`: Física del juego, digestión de comida, bombas y gestión de rondas.
+  - `horse.py`: El Caballo sagrado (`HorseVerifier`, BFS escape, `_detect_loop`, penalización de huecos).
+  - `riders.py`: Los Jinetes (`MultiAgentBotController`, espiral oscilante, pulso de hambre, 5 facciones).
+  - `events.py`: `UDPReceiver` (8765), `EventBus`, `ActionSystem` y mapeo de teclado.
+  - `renderer.py`: Renderizado gráfico proporcional, Manzanas Doradas vs Normales, HUD estricto y 3D.
+  - `scenes.py`: Escenas desacopladas (`MainMenu`, `ModeSelect`, `ColosseumSetup`, `Controls`, `TikTok`, `Play`).
+  - `main.py`: Punto de entrada limpio y bucle de juego.
+- [x] **Nuevo Sistema de Alimentos**:
+  - Manzanas Doradas: Base re-spawneable continua (1 por gladiador activo), brillo solar áureo.
+  - Manzanas Normales: Consumibles carmesí/verde para engorde rápido (tecla `[ C ]`), no reaparecen tras ser comidas.
+  - Supresión de Doradas: Tecla `[ V ]` para eliminar una Manzana Dorada si se desea menor densidad.
+- [x] **Corrección del Modo Hipnótico / Zen**:
+  - Implementación de Espiral Respiratoria (Inward/Outward).
+  - Algoritmo `_detect_loop` con penalización de ciclo para evitar bucles cuadrados perimetrales.
+  - Pulso de hambre zen que intercepta la comida tras 120 ticks de ayuno y reanuda el patrón.
+- [x] Suite completa de pruebas en [`test_engine.py`](file:///c:/Users/JSCC2/OneDrive/Documentos/PROYECTOS/SNAKE/test_engine.py) pasando al 100% (Versiones pasadas, 2.0.py legacy, y nueva arquitectura modular).
 
 ### 📋 Backlog de Tareas Futuras (v2.1+)
+- [ ] Integración de fondos de pantalla dinámicos desde la carpeta `Background/`.
 - [ ] Efectos de audio retro sintetizados (mordisco, mecha, sirena de bomba atómica).
 - [ ] Sistema de metas colectivas de donaciones (Barra de progreso de TikTok Raid).
 - [ ] Portales de teletransporte bidireccionales en el Coliseo.

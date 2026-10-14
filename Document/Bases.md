@@ -150,3 +150,26 @@ flowchart LR
 * **La Danza**: La serpiente defensiva quema tiempo mediante figuras en "ocho" y bucles cerrados de alta holgura.
 * **El Contragolpe**: En el instante milimétrico en que el contador del Modo Dorado rival expira y pierde la invulnerabilidad, la serpiente defensiva gira y corta el paso al titán ahora mortal.
 
+---
+
+## 6. Las Leyes del Ecosistema de Alimentos
+
+1. **Manzanas Doradas (Re-spawneables)**:
+   - **Aspecto**: Aura áurea resplandeciente con núcleo de brillo solar.
+   - **Comportamiento**: Son el sustrato vital continuo del Coliseo. Cuando una es comida, **inmediatamente reaparece otra** en una casilla libre.
+   - **Población base**: Exactamente **1 Manzana Dorada por cada serpiente activa** en todos los modos de juego.
+   - **Gestión**: Con la tecla `[ V ]`, el streamer o moderador puede eliminar una Manzana Dorada si desea reducir la comida base.
+
+2. **Manzanas Normales (Consumibles de Engorde Rápido)**:
+   - **Aspecto**: Rojo carmesí clásico con tallo leñoso y hoja verde.
+   - **Comportamiento**: Son temporales y no re-spawneables. Al ser consumidas, aumentan la longitud de la serpiente pero **no reaparecen**.
+   - **Control de Pacing**: Con la tecla `[ C ]`, el streamer puede spawnear manzanas normales en masa para engordar a las serpientes rápidamente durante eventos o picos de emoción en directo. Una vez digeridas todas, el mapa recupera su equilibrio natural con solo las manzanas doradas.
+
+---
+
+## 7. Desacoplamiento Modular: El Caballo y el Jinete
+
+- **El Caballo (`horse.py`)**: Es el sustrato inviolable que ejecuta la física, las colisiones, el BFS de escape a la cola, la detección de ciclos (`_detect_loop`) y el filtro de huecos vacíos. Cada serpiente en el Coliseo posee su propio Caballo.
+- **El Jinete (`riders.py`)**: Es la mente táctica que selecciona entre los movimientos ya aprobados por el Caballo.
+- Si un Jinete propone una acción que conduzca al suicidio o a un callejón sin salida, **su Caballo veta la orden** y toma la trayectoria de escape garantizada.
+
